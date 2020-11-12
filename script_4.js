@@ -19,21 +19,23 @@ const entrepreneurs = [
     { first: 'Peter', last: 'Thiel', year: 1967 }
   ];
 
+function display(array)
+{
+    for(var i = 0; i < array.length; i++)
+    {
+        console.log(array[i]);
+    }
+}
+
 //Filtre dans cette liste les entrepreneurs qui sont nés dans les années 70
 console.log("\nFiltre dans cette liste les entrepreneurs qui sont nés dans les années 70\n\n");
 res = (entrepreneurs.filter(entrepreneurs => entrepreneurs.year >= 1970 && entrepreneurs.year < 1980));
-for (var i = 0; i < res.length; i++)
-{    
-    console.log(res[i]);
-}
+display(res)
 
 // Sors une array qui contient le prénom et le nom des entrepreneurs ;
 console.log("\nSors une array qui contient le prénom et le nom des entrepreneurs\n\n")
 names = (entrepreneurs.map(entrepreneurs => `${entrepreneurs.first} ${entrepreneurs.last}`))
-for (i = 0; i < names.length; i ++)
-{
-    console.log(names[i]);
-}
+display(names)
 
 //Quel âge aurait chaque inventeur aujourd'hui ?
 console.log("\nQuel âge aurait chaque inventeur aujourd'hui ?\n\n");
@@ -46,3 +48,8 @@ for (i = 0; i < birth_year.length; i++)
 
 //Trie les entrepreneurs par ordre alphabétique du nom de famille.
 console.log("\nTrie les entrepreneurs par ordre alphabétique du nom de famille.\n\n");
+entrepreneurs.sort(function (a , b) 
+{
+    return a.last.localeCompare(b.last)
+})
+  display(entrepreneurs);
